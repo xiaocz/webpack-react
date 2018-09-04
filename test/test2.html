@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+    var MyComponent=React.createClass({
+    getInitialState: function() {
+        return {clickNum: 0};
+    },
+    handleClick:function(){
+        var num=this.state.clickNum;
+        num++;
+        this.setState({clickNum:num});
+    },
+    render: function() {
+    return (
+        <div>
+            <h1 onClick={this.handleClick}>Hello {this.props.name}!</h1>
+            <h2 style={{color:'red'}}>点击{this.props.name}次数：{this.state.clickNum}</h2>
+        </div>
+        );
+    }
+    });
+    ReactDOM.render(
+    <div>
+        <MyComponent name="张三" />
+        <hr/>
+        <MyComponent name="李四" />
+    </div>,
+    document.getElementById('example')
+); 
+</script>
+
+</body>
+</html>
